@@ -32,8 +32,8 @@ const playGame = (playerMove) => {
   console.log(result);
 };
 
-// Main logic to handle command line input
-const args = process.argv.slice(2); // Get command line arguments excluding first two (node and script path)
+// handle command line input
+const args = process.argv.slice(2);
 
 if (args.length === 0) {
   console.log(
