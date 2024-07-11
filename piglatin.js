@@ -20,5 +20,5 @@ const input = process.argv.slice(2).join(" ");
 if (input) {
   console.log(translateSentance(input));
 } else {
-  console.log("Write anything for translate a phrase to Piglatin.");
+  console.log("Write anything for translate a phrase into Piglatin.");
 }
