@@ -1,51 +1,43 @@
 // Function to generate a random move for the computer
 const getComputerMove = () => {
   const moves = ["rock", "paper", "scissors"];
-  return moves[Math.floor(Math.random() * moves.length)];
+  const randomIndex = Math.floor(Math.random() * moves.length);
+  return moves[randomIndex];
+};
+
+// Function to get the player's move from command line arguments
+const getPlayerMove = () => {
+  const myMove = process.argv[2];
+  if (!["rock", "paper", "scissors"].includes(myMove)) {
+    console.log("Invalid! Please choose rock, paper, or scissors.");
+  }
+  return myMove;
 };
 
 // Function to determine the winner
-const determineWinner = (playerMove, computerMove) => {
-  const winConditions = {
-    rock: "scissors",
-    paper: "rock",
-    scissors: "paper",
-  };
-
-  if (playerMove === computerMove) {
+const identifyWinner = (myMove, computerMove) => {
+  if (myMove === computerMove) {
     return "It's a draw!";
-  } else if (winConditions[playerMove] === computerMove) {
-    return "You win!";
+  }
+  if (
+    (myMove === "rock" && computerMove === "scissors") ||
+    (myMove === "scissors" && computerMove === "paper") ||
+    (myMove === "paper" && computerMove === "rock")
+  ) {
+    return "You win this game good job!";
   } else {
-    return "You lose!";
+    return "You lose this game try again!";
   }
 };
 
-// Function to play the game
-const playGame = (playerMove) => {
+// Main function to run the game
+const playGame = () => {
+  const myMove = getPlayerMove();
   const computerMove = getComputerMove();
+  const result = identifyWinner(myMove, computerMove);
 
-  console.log(`Player chose: ${playerMove}`);
-  console.log(`Computer chose: ${computerMove}`);
-
-  const result = determineWinner(playerMove, computerMove);
+  console.log(`Player move: ${myMove}`);
+  console.log(`Computer move: ${computerMove}`);
   console.log(result);
 };
-
-// handle command line input
-const args = process.argv.slice(2);
-
-if (args.length === 0) {
-  console.log(
-    "Please provide your move as an argument (rock, paper, or scissors)."
-  );
-} else {
-  const [playerMove] = args; // Destructuring to get the first argument
-  if (["rock", "paper", "scissors"].includes(playerMove)) {
-    playGame(playerMove);
-  } else {
-    console.log(
-      "Invalid move. Please choose either 'rock', 'paper', or 'scissors'."
-    );
-  }
-}
+playGame();
