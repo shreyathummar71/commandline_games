@@ -4,14 +4,15 @@ function checkVowel(text) {
 
 function piglatinTranslate(word) {
   if (checkVowel(word[0])) {
-    return word + "ay";
+    return word + "ay"; //Check if the first letter is a vowel
   } else if (!checkVowel(word[0]) && checkVowel(word[1])) {
-    return word.slice(1) + word[0] + "ay";
+    return word.slice(1) + word[0] + "ay"; //Check if the first letter is a consonant and the second letter is a vowel
   } else {
-    return word.slice(2) + word.slice(0, 2) + "ay";
+    return word.slice(2) + word.slice(0, 2) + "ay"; //Handle words starting with two consonants
   }
 }
 
+//Function for translating
 function translateSentance(sentance) {
   return sentance.split(" ").map(piglatinTranslate).join(" ");
 }

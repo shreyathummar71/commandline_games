@@ -1,9 +1,9 @@
-// Step 1: Get inputs from command line arguments
+//Get inputs from command line arguments
 const args = process.argv.slice(2);
 const phrase = args[0];
-const shift = parseInt(args[1], 10); // Ensure to specify base 10 for parseInt
+const shift = parseInt(args[1], 10);
 
-// Step 2: Define the Caesar Cipher function
+//Define the Caesar Cipher function
 function caesarCipher(phrase, shift) {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   const alphabetSize = 26;
@@ -21,12 +21,13 @@ function caesarCipher(phrase, shift) {
     const lowerChar = char.toLowerCase();
 
     if (alphabet.includes(lowerChar)) {
+      // Check condition for lowercase
       const currentIndex = alphabet.indexOf(lowerChar);
       const newIndex = (currentIndex + normalizedShift) % alphabetSize;
       let newChar = alphabet[newIndex];
 
       if (isUpperCase) {
-        newChar = newChar.toUpperCase();
+        newChar = newChar.toUpperCase(); // Do uppercase if text or letter is uppercase
       }
       result = result + newChar;
     } else {
@@ -37,8 +38,6 @@ function caesarCipher(phrase, shift) {
   return result;
 }
 
-// Step 3: Encrypt the phrase using the Caesar Cipher function
+// Encrypt the phrase using the Caesar Cipher function
 const encryptedPhrase = caesarCipher(phrase, shift);
-
-// Step 4: Output the encrypted phrase to the console
 console.log(encryptedPhrase);
