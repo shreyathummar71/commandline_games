@@ -11,9 +11,6 @@ function caesarCipher(phrase, shift) {
 
   // Normalize the shift to ensure it's within the range of 0-25
   let normalizedShift = shift % alphabetSize;
-  if (normalizedShift < 0) {
-    normalizedShift += alphabetSize;
-  }
 
   for (let i = 0; i < phrase.length; i++) {
     const char = phrase[i];
@@ -27,7 +24,7 @@ function caesarCipher(phrase, shift) {
       let newChar = alphabet[newIndex];
 
       if (isUpperCase) {
-        newChar = newChar.toUpperCase(); // Do uppercase if text or letter is uppercase
+        newChar = newChar.toUpperCase(); // Check uppercase if text or letter is uppercase
       }
       result = result + newChar;
     } else {

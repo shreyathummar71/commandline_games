@@ -9,7 +9,7 @@ const getComputerMove = () => {
 const getPlayerMove = () => {
   const myMove = process.argv[2];
   if (!["rock", "paper", "scissors"].includes(myMove)) {
-    console.log("Invalid! Please choose rock, paper, or scissors.");
+    console.log("Invalid! Please enter rock, paper, or scissors.");
   }
   return myMove;
 };
@@ -36,8 +36,7 @@ const playGame = () => {
   const computerMove = getComputerMove();
   const result = identifyWinner(myMove, computerMove);
 
-  console.log(`Player move: ${myMove}`);
-  console.log(`Computer move: ${computerMove}`);
+  console.log(`You Choose: ${myMove} AND Computer Choose: ${computerMove} `);
   console.log(result);
 };
 playGame();
